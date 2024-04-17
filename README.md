@@ -89,3 +89,9 @@ This is the place for you to write reflections:
 - **API Testing**: Postman provides a user-friendly interface for sending HTTP requests to APIs, making it easy to test different endpoints, methods, and payloads. I can quickly create requests, specify parameters, headers, and authentication details, and examine the responses.
 
 #### Reflection Publisher-3
+1. Push model
+2. **Advantages of Pull Model:** In the pull model, subscribers actively request updates from the subject when they are ready to process them. This reduces coupling between the subject and its subscribers, as the subject doesn't need to have direct knowledge of its subscribers.
+**Disadvantages of Pull Model:**
+Subscribers in the pull model need to implement logic for polling the subject and handling updates. This can increase complexity for subscribers, especially if they need to manage multiple subjects or prioritize updates from different sources.
+3. **Reduced Concurrency:** Without multi-threading, the program will have reduced concurrency capabilities. Each request will be processed sequentially, one after the other, instead of being processed concurrently in multiple threads. This can limit the program's ability to handle multiple requests simultaneously and may result in lower responsiveness under heavy load.
+**Potential Deadlocks or Race Conditions:** If the notification process involves shared resources or mutable state, not using multi-threading can increase the risk of deadlocks or race conditions. Without proper synchronization mechanisms, concurrent access to shared resources may lead to unexpected behavior and data corruption.
