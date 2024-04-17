@@ -77,7 +77,15 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. No. Our single Model struct (`Subscriber`) represents subscribers, and operations are performed directly on instances of this struct. If all subscribers are expected to have the same behavior and interface, then this approach is sufficient.
+2. No, using **Vec** (list) is not sufficient. Considering the need for uniqueness based on **id** for **Program** and **url** for **Subscriber**, using a `DashMap` seems necessary. It provides efficient lookup and insertion based on unique keys, ensuring that duplicates are not allowed.
+3. Singleton pattern could be used to create a single instance of the `DashMap` for storing subscribers, but it does not inherently provide thread safety. Using DashMap directly ensures thread safety and simplifies the implementation, as it already handles concurrent access gracefully.
 
 #### Reflection Publisher-2
+1. The separation of “Service” and “Repository” from the Model in MVC is primarily about adhering to the **Single Responsibility Principle (SRP)** and the **Separation of Concerns (SoC)** principle. By separating out the “Service” (business logic) and “Repository” (data storage), each class has a single, well-defined responsibility. This makes the system easier to understand, test, and maintain. Furthermore, a “Service” class can focus on business logic, while a “Repository” class can focus on data storage. This separation allows for better modularity and easier code management.
+2. If we only use the models without any additional design patterns or architectural considerations, the interactions between the models (`Product`, `Subscriber`, and `Notification`) will likely be direct and tightly coupled. The `Product` model represents a product in the system. Without any additional architecture, the `Product` model would not have direct knowledge of other models such as `Subscriber` or `Notification`. This works for the other two models. Overall, without additional architectural patterns or design considerations, the code complexity for each model may increase as the application grows and more interactions between models are required.
+3. Here's how it helps me in my work and some features I find particularly useful:
+- **Collections**: Collections allow me to organize related requests into groups, making it easy to manage and execute them as a sequence.
+- **API Testing**: Postman provides a user-friendly interface for sending HTTP requests to APIs, making it easy to test different endpoints, methods, and payloads. I can quickly create requests, specify parameters, headers, and authentication details, and examine the responses.
 
 #### Reflection Publisher-3
